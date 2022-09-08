@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <span style="color: #ffb703; font-size: 50px">B</span>LOG
+        </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <ng-container *ngIf="!loggedIn">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="btn btn-outline-light text-white rounded-pill px-3" routerLink="/login">LOG IN</a>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="loggedIn">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/create-blog" routerLinkActive="active">ADD NEW</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/all-blogs" routerLinkActive="active">ALL BLOGS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/my-blogs" routerLinkActive="active">YOUR BLOGS</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="btn btn-warning rounded-pill px-3" (click)="logout()">LOG OUT</a>
+                </li>
+            </ng-container>
+        </ul>
+      </div>
+    </div>
+</nav>

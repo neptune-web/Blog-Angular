@@ -1,0 +1,44 @@
+<div class="container my-3">      
+    <div class="row my-2">
+      <div class="col-sm-12 col-md-6 my-4" *ngFor="let blog of blogs | paginate: { itemsPerPage: 6, currentPage: p}">
+        <div class="card border-0 shadow-sm">
+          <div class="card-header">
+            <h5 class="card-title fw-bold">{{ blog.title.toUpperCase() }}</h5>
+            <div class="d-flex flex-row">
+              <span class="text-muted text-center">
+                <i class="bi bi-person-fill"></i>
+                <span class="text-danger mx-1">{{ blog?.authorDetail.name }}</span>
+              </span>
+              <span class="text-muted text-center mx-3">
+                  <i class="bi bi-calendar3"></i>
+                  <span class="text-danger mx-1">{{ blog?.updatedAt | date: 'longDate' }}</span>
+              </span>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text" [innerHTML]="blog.body.substring(0,190) + '...'"></p>
+            <div class="tag-list mt-3">
+              <a *ngFor="let tag of blog.tags"
+                 class="btn-sm rounded-pill mx-1 text-dark" id="tags">
+                 {{ tag }}
+              </a>
+            </div>
+            <div class="mt-4">
+              <span class="text-muted">
+                <i class="bi bi-chat"></i>
+                <span class="mx-1">{{ blog?.comments?.length }} comments</span>
+              </span>
+              <a class="float-end btn btn-warning" id="read-more-btn" [routerLink]="['/all-blogs/', blog._id, 'view-blog']">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event" class="text-center mt-5"></pagination-controls>
+</div>
+
+
+ 
+  

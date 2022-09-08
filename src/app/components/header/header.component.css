@@ -1,0 +1,24 @@
+.navbar{
+    background-color: #003566;
+}
+.navbar-brand{
+    color: #edf6f9;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.nav-link{
+    color: #edf6f9;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.nav-link:hover{
+    color: #ffb703;
+}
+.btn:hover{
+    color: #edf6f9;
+    background-color: #ffb703;
+    border: 2px solid #ffb703;
+}
+li > a.active { color: #ffb703 }

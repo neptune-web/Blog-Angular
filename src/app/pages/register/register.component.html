@@ -1,0 +1,52 @@
+<div class="my-5">
+    <div class="container col-sm-6 col-md-4 card border-0 shadow-lg px-5 py-4 rounded-3">
+        <h1 class="text-center text-orange border-bottom py-3 mb-3">REGISTER</h1>
+        <div *ngIf="registerError" class="alert alert-danger" role="alert">
+            {{errorMsg}}
+        </div>
+        <div class="row">
+            <form [formGroup]="fg" (submit)="register()">
+                <div class="">
+                    <label for="name">Name</label>
+                    <div class="">
+                        <input type="text" [ngClass]="{'error' : fg.get('name').errors}" class="form-control" formControlName="name">
+                        <small class="text-danger" *ngIf="fg.get('name').errors">Please Enter at least 4 charecters</small>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="email">Email</label>
+                    <div class="">
+                        <input type="email" [ngClass]="{'error' : fg.get('email').errors}" class="form-control" formControlName="email">
+                        <small class="text-danger" *ngIf="fg.get('email').errors">Please Enter a Valid Email</small>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="password">Password</label>
+                    <div class="">
+                        <input type="password" [ngClass]="{'error' : fg.get('password').errors}" class="form-control" formControlName="password">
+                        <small class="text-danger" *ngIf="fg.get('password').errors">Please Enter at least 4 charecters</small>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-warning w-100 text-white fs-5" type="submit">
+                        <span class="h5">SIGN UP</span>
+                        <div class="spinner-border text-light" role="status" *ngIf="loading">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="mt-3">
+                    <span class="small">
+                        Already have an account?
+                        <a routerLink="/login" class="fw-bold">Login Here</a>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+</div>

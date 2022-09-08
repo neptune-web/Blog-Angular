@@ -1,0 +1,55 @@
+<div class="container my-3" >
+    <div class="card border-0 bg-light p-5">
+        <h1 class="text-center">{{ blog?.title.toUpperCase() }}</h1>
+        <p class="text-muted text-center">
+            <i class="bi bi-person-fill"></i>
+            {{ blog?.authorDetail.name }}
+        </p>
+        <p class="text-muted text-center">
+            <i class="bi bi-calendar3"></i>
+            {{ blog?.postedAt | date: 'short' }}
+        </p>
+        <p class="mt-4" [innerHTML]="blog?.body"></p>
+        <div class="tag-list mt-3">
+            <span>Tags:</span>
+            <a *ngFor="let tag of blog.tags"
+               class="btn-sm btn-danger rounded-pill mx-2 text-dark" id="tags">
+                {{ tag }}
+            </a>
+        </div>
+    </div>
+    <div class="border-bottom my-4 border-2"></div>
+    <div class="mt-3 py-2">
+        <div class="">
+            <h4>Post a Comment</h4>
+            <div class="">
+                <textarea type="text" placeholder="Enter your Comment Here..." [(ngModel)]="addcomment" class="border-0 rounded-3 bg-light p-3 w-100"></textarea>
+            </div>
+            <a class="btn btn-warning rounded-3 w-auto" (click)="addComment(blog?._id)">Publish</a>
+        </div>
+    </div>
+    <div class="border-bottom my-4 border-2"></div>
+    <div class="mt-3">
+        <a class="text-secondary border-bottom border-secondary" (click)="toggleComments(blog, $event)">
+            View All {{ blog?.comments?.length }} Comments
+        </a>
+    </div>
+    <div class="mt-3" *ngIf="blog?.showComments">
+        <div *ngFor="let comment of blog?.comments" class="row mt-4">
+            <div class="col-1">
+                <span class="aui-avatar">
+                    <span class="aui-avatar-inner">
+                        <img src="../../../../assets/avatar-person.svg" alt="Person McRealface" />
+                    </span>
+                </span>
+            </div>
+            <div class="col-11">
+                <span class="fw-bold">{{ comment?.name}}</span> <br/>
+                <span class="small text-muted fst-italic">Posted at {{comment?.postedAt | date: 'short'}}</span> <br/>
+                <span>{{ comment?.comment }}</span>
+            </div>
+            <div class="border-bottom my-4 border-2"></div>
+        </div>
+    </div>     
+</div>
+
